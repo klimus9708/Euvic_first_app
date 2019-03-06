@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:JustApp"
+             x:Class="JustApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
+ 
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        
+        <Label Text="Welcome!" 
+           HorizontalOptions="Center"
+           VerticalOptions="StartAndExpand" 
+               FontSize="80"/>
+
+        <Button x:Name="GMapButton"
+                Text="Google Map page"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                Clicked="GMapButton_Clicked"/>
+
+        <Button x:Name="SignatureButton"
+                Text="Signature page"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                Clicked="SignatureButton_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
