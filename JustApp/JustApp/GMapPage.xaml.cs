@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Essentials;
+using Plugin.ExternalMaps;
 
 namespace JustApp
 {
@@ -55,9 +56,9 @@ namespace JustApp
 
 
         }
-        //Konwersja wpisywanego adressu na współrzędne
+        //Konwersja wpisywanego adresu na współrzędne
 
-        private async void Adres_Clicked(object sender, EventArgs e)
+        public async void Adres_Clicked(object sender, EventArgs e)
         {
             
 
@@ -68,6 +69,8 @@ namespace JustApp
                 var locations = await Geocoding.GetLocationsAsync(address);
 
                 var location = locations?.FirstOrDefault();
+                
+                
                 if (location != null)
                 {
                     Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
@@ -85,7 +88,11 @@ namespace JustApp
                     
                     map.Pins.Add(pin1);
                     map.MoveToRegion(MapSpan.FromCenterAndRadius(pin1.Position, Distance.FromMeters(3000)));
+                   
+                    
                 }
+                
+                pin1.Clicked += Pin1_Clicked;
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -95,7 +102,14 @@ namespace JustApp
             {
                 // Handle exception that may have occurred in geocoding
             }
+            
 
+
+        }
+
+        private void Pin1_Clicked(object sender, EventArgs e)
+        {
+            CrossExternalMaps.Current.NavigateTo("Wybrany adres",pin1.Position.Latitude,pin1.Position.Longitude);
         }
 
         private void DeleteButton_Clicked(object sender, EventArgs e)

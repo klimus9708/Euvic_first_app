@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Telephony;
 using Android.Content;
 using Xamarin.Forms.GoogleMaps.Android;
+using System.Threading.Tasks;
+using Android;
 
 namespace JustApp.Droid
 {
@@ -42,5 +44,16 @@ namespace JustApp.Droid
         {
 
         }
+
+
+
+        // permisje 
+
+        //https://github.com/jamesmontemagno/MarshmallowSamples/blob/master/RuntimePermissions/MarshmallowPermission/MainActivity.cs
+        //https://blog.xamarin.com/requesting-runtime-permissions-in-android-marshmallow/
+
+
+
+
     }
 }

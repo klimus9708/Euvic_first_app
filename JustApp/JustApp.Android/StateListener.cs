@@ -26,7 +26,7 @@ namespace JustApp
         {
             base.OnCallStateChanged(state, incomingNumber);
             _activity.UpdateCallState(state, incomingNumber);
-            Console.WriteLine(incomingNumber);
+           Console.WriteLine(incomingNumber);
         }
     }
 }
