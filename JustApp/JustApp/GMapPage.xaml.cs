@@ -16,6 +16,13 @@ namespace JustApp
 	public partial class GMapPage : ContentPage
 	{
         Pin pin1 = null;
+        Pin CustomPin;
+        public string stan;
+        int i;
+
+
+
+
         public GMapPage ()
 		{
 			InitializeComponent ();
@@ -109,14 +116,75 @@ namespace JustApp
 
         private void Pin1_Clicked(object sender, EventArgs e)
         {
-            CrossExternalMaps.Current.NavigateTo("Wybrany adres",pin1.Position.Latitude,pin1.Position.Longitude);
+            //CrossExternalMaps.Current.NavigateTo("Wybrany adres",pin1.Position.Latitude,pin1.Position.Longitude);
         }
+
+
+        //Włącznie pinu z przycisku
+        public void ButtonTurnOnPins_Clicked(object sender, EventArgs e)
+        {
+
+            {
+                CustomPin = new Pin()
+                {
+                    Type = PinType.Place,
+                    Label = "Euvic",
+                    Address = "Puławska 182",
+                    Position = new Position(52.181698, 21.021615),
+                };
+                CustomPin.Tag = "Genrowany tag"; //<---- na tym dziłaj 
+                map.Pins.Add(CustomPin);
+
+                map.PinClicked += Map_PinClicked;
+                map.InfoWindowClicked += InfoWindow_Clicked;
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(CustomPin.Position, Distance.FromKilometers(0.5)), true);
+            }
+
+        }
+
+        //wywołanie akcji dla kliknięcia pinu
+        async void Map_PinClicked(object sender, PinClickedEventArgs e)
+        {
+
+            if (i % 2 == 0)
+            {
+                stan = "Zapłacone";
+            }
+            else
+            {
+                stan = "Nie zapłacone";
+            }
+            string messege = ("\nPłatność: " + stan + "\n" + "adres: Puławska 182" + /*adres*/ "\n" + "");
+            await DisplayAlert("Dane:", $"{e.Pin.Tag}" + messege, "Close");
+           
+
+        }
+
+
+        //wywoałeni akcji dla kliknięci info window
+
+        void InfoWindow_Clicked(object sender, InfoWindowClickedEventArgs e)
+        {
+
+            Device.OpenUri(new Uri("https://www.euvic.pl/o-nas/o-euvic/"));
+        }
+
+
+        //usuwanie wszystkich pinów 
 
         private void DeleteButton_Clicked(object sender, EventArgs e)
         {
             map.Pins.Clear();
             pin1 = null;
         }
+
+
+        //obsługa guzika dla zmiany stanu 
+        private void ChangeStan_Clicked(object sender, EventArgs e)
+        {
+            i++;
+        }
+
     }
 }
 	

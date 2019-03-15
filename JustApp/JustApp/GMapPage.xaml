@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              x:Class="JustApp.GMapPage"
@@ -108,6 +107,35 @@
                             Grid.Row="3"
                             Grid.Column="1"
                             Clicked="DeleteButton_Clicked"/>
+
+
+                    <Label Text="Show defined pins"
+                           VerticalOptions="Center"
+                           Grid.Row="4"
+                           Grid.Column="0" />
+
+                    <Button x:Name="ButtonTurnOnPins"
+                            Text="Show"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Grid.Row="4"
+                            Grid.Column="1" 
+                            Clicked="ButtonTurnOnPins_Clicked"/>
+
+                    <Label Text="Change payment status"
+                           VerticalOptions="Center"
+                           Grid.Row="5"
+                           Grid.Column="0" />
+
+                    <Button x:Name="ChangeStan"
+                            Text="Change"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Grid.Row="5"
+                            Grid.Column="1" 
+                            Clicked="ChangeStan_Clicked"/>
+
+
 
 
 
